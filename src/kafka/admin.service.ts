@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { Consumer, Kafka } from 'kafkajs';
+import { kafkaBrokers } from './kafka.config';
 
 @Injectable()
 export class AdminService {
   private readonly admin = new Kafka({
-    brokers: ['DESKTOP-82T96U7:9092'],
+    brokers: kafkaBrokers(),
   }).admin();
   private readonly consumers: Consumer[] = [];
 

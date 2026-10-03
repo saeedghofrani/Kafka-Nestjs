@@ -1,10 +1,11 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { Kafka,Producer,ProducerRecord } from 'kafkajs';
+import { kafkaBrokers } from './kafka.config';
 
 @Injectable()
 export class ProdeucerService implements OnModuleInit {
   private readonly kafka = new Kafka({
-    brokers: ['DESKTOP-82T96U7:9092'],
+    brokers: kafkaBrokers(),
   });
   private readonly producer: Producer = this.kafka.producer();
 
